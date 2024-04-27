@@ -231,8 +231,9 @@ position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_jkgaj")
 animation = &"Attack"
 autoplay = "Idle"
-frame_progress = 0.455152
+frame_progress = 0.544574
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, -9)
 shape = SubResource("CapsuleShape2D_pacvv")

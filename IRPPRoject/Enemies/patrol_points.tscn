@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ce7vxqfpjo0jn"]
+
+[node name="PatrolPoints" type="Node2D"]
+
+[node name="Point1" type="Marker2D" parent="."]
+position = Vector2(-159, -1)
+
+[node name="Point2" type="Marker2D" parent="."]
+position = Vector2(128, 0)

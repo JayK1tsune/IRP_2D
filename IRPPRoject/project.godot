@@ -15,6 +15,10 @@ run/main_scene="res://Levels/Base_Level.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Manager="*res://Scripts/Manager.gd"
+
 [display]
 
 window/size/viewport_width=480
@@ -55,4 +59,3 @@ jump={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.447059, 0.129412, 0.533333, 1)

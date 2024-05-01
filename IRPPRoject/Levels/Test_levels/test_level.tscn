@@ -18,9 +18,8 @@ speed = 300
 slow_down_speed = 3000
 jump = -250
 
-[node name="Enemy" parent="." index="3" node_paths=PackedStringArray("patrol_points") instance=ExtResource("2_ivt5g")]
+[node name="Enemy" parent="." index="3" instance=ExtResource("2_ivt5g")]
 position = Vector2(411, -50)
-patrol_points = NodePath("")
 SPEED = 1000.0
 
 [node name="PatrolPoints" parent="Enemy" index="2" instance=ExtResource("4_8w1cu")]

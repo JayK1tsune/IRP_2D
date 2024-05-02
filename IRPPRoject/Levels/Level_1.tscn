@@ -17,14 +17,15 @@ layer_1/tile_data = PackedInt32Array(-131072, 851968, 7, -65536, 131075, 2, -131
 layer_2/tile_data = PackedInt32Array(-262144, 2, 2, -196608, 2, 3, -262143, 65538, 2, -196607, 65538, 3, -327666, 131074, 1, -196594, 131074, 3, -327665, 196610, 1, -262129, 196610, 2, -196593, 196610, 3, -327664, 262146, 1, -262128, 262146, 2, -196600, 65536, 6, -131064, 65536, 7, -65528, 65536, 8, -196585, 65536, 6, -131049, 65536, 7, -65513, 65536, 8, -196590, 65536, 6, -131054, 65536, 7, -65518, 65536, 8, -524279, 524288, 3, -458743, 524288, 4, -524268, 524288, 3, -458732, 524288, 4, -786417, 65536, 6, -720881, 65536, 7, -655345, 65536, 8, -917490, 131074, 268435462, -851954, 131074, 268435463, -786418, 131074, 268435464, -917491, 196610, 268435462, -851955, 196610, 268435463, -786419, 196610, 268435464, -917492, 262146, 268435462, -851956, 262146, 268435463, -786420, 262146, 268435464, -917493, 327682, 268435462, -851957, 327682, 268435463, -720882, 131074, 268435465, -720883, 196610, 268435465, -720884, 262146, 268435465)
 
 [node name="Player" parent="." index="2"]
-position = Vector2(48, -72)
-speed = 100
+position = Vector2(29, -187)
+speed = 150
+max_horizontal_speed = 100
 slow_down_speed = 2000
-jump = -300
-jump_horizontal_speed = 200
+jump = -250
+jump_horizontal_speed = 300
 max_jump_horizontal_speed = 200
 
-[node name="Camera2D" parent="Player" index="2"]
+[node name="Camera2D" parent="Player" index="3"]
 limit_left = 0
 limit_top = -334
 limit_right = 1600
@@ -34,6 +35,7 @@ editor_draw_limits = true
 [node name="Enemy" parent="." index="3" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_heuet")]
 position = Vector2(127, -179)
 patrol_points = NodePath("PatrolPoints")
+health = 2
 
 [node name="PatrolPoints" parent="Enemy" index="3" instance=ExtResource("4_nusai")]
 

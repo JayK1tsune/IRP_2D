@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dttnve5di0u4b"]
+[gd_scene load_steps=39 format=3 uid="uid://dttnve5di0u4b"]
 
 [ext_resource type="Texture2D" uid="uid://0ps1v08n08ws" path="res://Assets/enimies/mimic_spritesheet.png" id="1_82lc3"]
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_nugob"]
@@ -248,7 +248,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ewt8l"]
-size = Vector2(25, 18)
+size = Vector2(25, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nalxv"]
+size = Vector2(27, 17)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_nugob")
@@ -261,7 +264,7 @@ autoplay = "Idle"
 frame_progress = 0.356097
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -9)
+position = Vector2(0.5, -7.5)
 shape = SubResource("RectangleShape2D_ewt8l")
 debug_color = Color(0.854902, 0.368627, 0, 0.419608)
 
@@ -269,4 +272,14 @@ debug_color = Color(0.854902, 0.368627, 0, 0.419608)
 wait_time = 5.0
 autostart = true
 
+[node name="DMG_Box" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DMG_Box"]
+position = Vector2(0.5, -7.5)
+shape = SubResource("RectangleShape2D_nalxv")
+debug_color = Color(0.933333, 0, 0.65098, 0.419608)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="DMG_Box" to="." method="_on_dmg_box_area_entered"]

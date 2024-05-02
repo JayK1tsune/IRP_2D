@@ -1,10 +1,13 @@
 extends CharacterBody2D
 
+var enemy_death_effect = preload("res://Enemies/enemy_death_effect.tscn")
+
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @export var patrol_points : Node
 @export var SPEED = 800.0
 @onready var timer = $Timer
 @export var waiting_time: int = 3
+@export var health : int = 5
 const JUMP_VELOCITY = -400.0
 
 #Animations states
@@ -16,6 +19,9 @@ var point_positions : Array[Vector2]
 var current_point : Vector2
 var current_point_position : int
 var can_walk : bool
+
+
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -39,7 +45,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	enemy_animations()
-	print("State: ", State.keys()[current_state])
+	#print("State: ", State.keys()[current_state])
 
 func enemy_gravity(delta : float):
 	velocity.y += gravity * delta
@@ -87,3 +93,17 @@ func enemy_animations():
 
 func _on_timer_timeout():
 	can_walk = true
+
+
+func _on_dmg_box_area_entered(area: Area2D):
+	
+	print("dmg box entered")
+	if area.has_method("get_dmg_amount"):
+		var node = area as Node
+		health -= node.damage_amount
+		print("Health is: " , health)
+		if health <= 0:
+			var enemy_death_effect_instance = enemy_death_effect.instantiate() as Node2D
+			enemy_death_effect_instance.global_position = global_position + Vector2(0,-10)
+			get_parent().add_child(enemy_death_effect_instance)
+			queue_free()

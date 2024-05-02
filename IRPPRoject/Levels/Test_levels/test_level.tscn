@@ -14,7 +14,6 @@ layer_0/tile_data = PackedInt32Array(-196608, 983040, 8, -131072, 983040, 8, -65
 
 [node name="Player" parent="." index="2"]
 position = Vector2(244, -53)
-speed = 300
 slow_down_speed = 3000
 jump = -250
 

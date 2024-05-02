@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://j2fk3n7jpaes"]
+[gd_scene load_steps=49 format=3 uid="uid://j2fk3n7jpaes"]
 
 [ext_resource type="Texture2D" uid="uid://cn7u7ibnxihug" path="res://Assets/Cat_Sprites/catset_assets/catset_assets/catset_spritesheets/cat02_spritesheets/cat02_idle_blink_strip8.png" id="1_4hrgn"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_r76sm"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b6h1lmhjs41gp" path="res://Assets/Cat_Sprites/catset_assets/catset_assets/catset_spritesheets/cat02_spritesheets/cat02_fall_strip3.png" id="4_h6mkx"]
 [ext_resource type="Texture2D" uid="uid://dyv5rpko50fu2" path="res://Assets/Cat_Sprites/catset_assets/catset_assets/catset_spritesheets/cat02_spritesheets/cat02_jump_strip4.png" id="5_l4np3"]
 [ext_resource type="Texture2D" uid="uid://41th7r3bkd2w" path="res://Assets/Cat_Sprites/catset_assets/catset_assets/catset_spritesheets/cat02_spritesheets/cat02_land_strip2.png" id="6_y2b5x"]
+[ext_resource type="Script" path="res://Player/attack_script.gd" id="9_bq4ip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_matbd"]
 atlas = ExtResource("2_8vs8k")
@@ -177,9 +178,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_odwox")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
-"speed": 8.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -303,19 +304,35 @@ animations = [{
 radius = 7.0
 height = 18.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k66pb"]
+radius = 4.0
+height = 24.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_r76sm")
-speed = 1000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_jkgaj")
-animation = &"Landing"
+animation = &"Attack"
 autoplay = "Idle"
-frame = 1
+frame = 6
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -9)
 shape = SubResource("CapsuleShape2D_pacvv")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("9_bq4ip")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(11, -10)
+shape = SubResource("CapsuleShape2D_k66pb")
+debug_color = Color(0.945098, 0.121569, 0.494118, 0.419608)
+
+[connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]

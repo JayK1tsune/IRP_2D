@@ -8,6 +8,7 @@ var enemy_death_effect = preload("res://Enemies/enemy_death_effect.tscn")
 @onready var timer = $Timer
 @export var waiting_time: int = 3
 @export var health : int = 5
+@export var damage_amount : int = 1
 const JUMP_VELOCITY = -400.0
 
 #Animations states

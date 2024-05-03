@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://j2fk3n7jpaes"]
+[gd_scene load_steps=50 format=3 uid="uid://j2fk3n7jpaes"]
 
 [ext_resource type="Texture2D" uid="uid://cn7u7ibnxihug" path="res://Assets/Cat_Sprites/catset_assets/catset_assets/catset_spritesheets/cat02_spritesheets/cat02_idle_blink_strip8.png" id="1_4hrgn"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_r76sm"]
@@ -308,7 +308,11 @@ height = 18.0
 radius = 4.0
 height = 24.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kycbg"]
+radius = 6.0
+height = 18.0
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_r76sm")
 
@@ -334,5 +338,15 @@ position = Vector2(11, -10)
 shape = SubResource("CapsuleShape2D_k66pb")
 debug_color = Color(0.945098, 0.121569, 0.494118, 0.419608)
 
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1, -9)
+shape = SubResource("CapsuleShape2D_kycbg")
+debug_color = Color(0.392157, 0.603922, 0.298039, 0.419608)
+
 [connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

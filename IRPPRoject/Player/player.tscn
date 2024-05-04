@@ -1,14 +1,20 @@
-[gd_scene load_steps=50 format=3 uid="uid://j2fk3n7jpaes"]
+[gd_scene load_steps=55 format=3 uid="uid://j2fk3n7jpaes"]
 
 [ext_resource type="Texture2D" uid="uid://cn7u7ibnxihug" path="res://Assets/Cat_Sprites/catset_assets/catset_assets/catset_spritesheets/cat02_spritesheets/cat02_idle_blink_strip8.png" id="1_4hrgn"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_r76sm"]
 [ext_resource type="Texture2D" uid="uid://dtpa1ulqyimlq" path="res://Assets/Cat_Sprites/catset_assets/catset_assets/catset_spritesheets/cat02_spritesheets/cat02_run_strip4.png" id="2_3egcw"]
 [ext_resource type="Texture2D" uid="uid://md1qwpet45wd" path="res://Assets/Cat_Sprites/catset_assets/catset_assets/catset_spritesheets/cat02_spritesheets/cat02_attack_strip7.png" id="2_8vs8k"]
+[ext_resource type="Shader" uid="uid://ciiue0wf5j5cy" path="res://Player/Player_Hit_Shader.tres" id="2_hct51"]
 [ext_resource type="Texture2D" uid="uid://b06swh43mp1w5" path="res://Assets/Cat_Sprites/catset_assets/catset_assets/catset_spritesheets/cat02_spritesheets/cat02_die_strip8.png" id="3_7iwvt"]
 [ext_resource type="Texture2D" uid="uid://b6h1lmhjs41gp" path="res://Assets/Cat_Sprites/catset_assets/catset_assets/catset_spritesheets/cat02_spritesheets/cat02_fall_strip3.png" id="4_h6mkx"]
 [ext_resource type="Texture2D" uid="uid://dyv5rpko50fu2" path="res://Assets/Cat_Sprites/catset_assets/catset_assets/catset_spritesheets/cat02_spritesheets/cat02_jump_strip4.png" id="5_l4np3"]
 [ext_resource type="Texture2D" uid="uid://41th7r3bkd2w" path="res://Assets/Cat_Sprites/catset_assets/catset_assets/catset_spritesheets/cat02_spritesheets/cat02_land_strip2.png" id="6_y2b5x"]
 [ext_resource type="Script" path="res://Player/attack_script.gd" id="9_bq4ip"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgw1f"]
+shader = ExtResource("2_hct51")
+shader_parameter/Enabled = false
+shader_parameter/hit_color = Color(0.909804, 0.176471, 0.176471, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_matbd"]
 atlas = ExtResource("2_8vs8k")
@@ -312,11 +318,49 @@ height = 24.0
 radius = 6.0
 height = 18.0
 
+[sub_resource type="Animation" id="Animation_n272k"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/Enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ngcdg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/Enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5a6ox"]
+_data = {
+"RESET": SubResource("Animation_ngcdg"),
+"hit": SubResource("Animation_n272k")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_r76sm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_qgw1f")
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_jkgaj")
 animation = &"Attack"
@@ -325,6 +369,7 @@ frame = 6
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, -9)
 shape = SubResource("CapsuleShape2D_pacvv")
 
@@ -334,18 +379,26 @@ collision_mask = 5
 script = ExtResource("9_bq4ip")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 position = Vector2(11, -10)
 shape = SubResource("CapsuleShape2D_k66pb")
 debug_color = Color(0.945098, 0.121569, 0.494118, 0.419608)
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+visible = false
 position = Vector2(-1, -9)
 shape = SubResource("CapsuleShape2D_kycbg")
 debug_color = Color(0.392157, 0.603922, 0.298039, 0.419608)
+
+[node name="Hit_animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5a6ox")
+}
 
 [connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]

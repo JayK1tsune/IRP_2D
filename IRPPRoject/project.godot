@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Simple2D_IRP"
-run/main_scene="res://Levels/Test_levels/test_level.tscn"
+run/main_scene="res://UI/Main_Menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Manager="*res://Scripts/Manager.gd"
 HealthManager="*res://Scripts/health_manager.gd"
+CollectiableManager="*res://Scripts/collectiable_manager.gd"
 
 [display]
 
@@ -62,6 +63,8 @@ Attack={
 2d_physics/layer_1="Ground"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Pickup"
+2d_physics/layer_5="Collectibles"
 
 [rendering]
 

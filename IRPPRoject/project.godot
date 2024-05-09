@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Simple2D_IRP"
 run/main_scene="res://UI/Main_Menu.tscn"
-config/features=PackedStringArray("4.2", "Forward Plus")
+config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Manager="*res://Scripts/Manager.gd"
 HealthManager="*res://Scripts/health_manager.gd"
 CollectiableManager="*res://Scripts/collectiable_manager.gd"
+CManager="*res://C#Scripts/C_Manager.cs"
 
 [display]
 

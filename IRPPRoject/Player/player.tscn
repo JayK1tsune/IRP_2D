@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://j2fk3n7jpaes"]
+[gd_scene load_steps=56 format=3 uid="uid://j2fk3n7jpaes"]
 
 [ext_resource type="Texture2D" uid="uid://cn7u7ibnxihug" path="res://Assets/Cat_Sprites/catset_assets/catset_assets/catset_spritesheets/cat02_spritesheets/cat02_idle_blink_strip8.png" id="1_4hrgn"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_r76sm"]
@@ -355,6 +355,9 @@ _data = {
 "hit": SubResource("Animation_n272k")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhxxv"]
+size = Vector2(22, 18)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_r76sm")
@@ -375,7 +378,7 @@ shape = SubResource("CapsuleShape2D_pacvv")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 69
 script = ExtResource("9_bq4ip")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
@@ -400,6 +403,15 @@ libraries = {
 "": SubResource("AnimationLibrary_5a6ox")
 }
 
+[node name="WaterCheck" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterCheck"]
+position = Vector2(-1, -9)
+shape = SubResource("RectangleShape2D_bhxxv")
+
 [connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_entered" from="WaterCheck" to="." method="_on_water_check_body_entered"]

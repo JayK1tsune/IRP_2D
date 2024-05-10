@@ -119,10 +119,20 @@ func input_movement():
 
 
 func _on_hurt_box_body_entered(body : Node2D):
+
 	if body.is_in_group("Enemy"):
-		print ("Enemy here!!", body.damage_amount) 
+		print ("Enemy hihihi!!", body.damage_amount) 
 		hit_animation.play("hit")
 		HealthManager.decrease_health(body.damage_amount)
 		
 		if HealthManager.current_health ==0:
 			player_death()
+
+
+
+
+
+func _on_water_check_body_entered(body):
+	if body.is_in_group("Water"):
+		print("In Water")
+		

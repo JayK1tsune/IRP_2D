@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c11e7g1djhwrm"]
+[gd_scene load_steps=9 format=3 uid="uid://c11e7g1djhwrm"]
 
 [ext_resource type="PackedScene" uid="uid://bb8coldjorqvo" path="res://Levels/Base_Level.tscn" id="1_bf11g"]
 [ext_resource type="PackedScene" uid="uid://dgxn17bqjk8qi" path="res://Background/parallax_background.tscn" id="2_0184m"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dttnve5di0u4b" path="res://Enemies/enemy.tscn" id="4_u273t"]
 [ext_resource type="PackedScene" uid="uid://ccadk28iwe8vl" path="res://UI/game_screen.tscn" id="5_yv6jh"]
 [ext_resource type="PackedScene" uid="uid://danml31nixt1b" path="res://Collectibles/Green Diamond/Emerald.tscn" id="7_eo1pm"]
+[ext_resource type="PackedScene" uid="uid://calcg3544loxj" path="res://Assets/door.tscn" id="8_v3j1p"]
 
 [node name="Test_level" instance=ExtResource("1_bf11g")]
 
@@ -30,10 +31,23 @@ jump = -250
 [node name="EnemyRat" parent="." index="5" instance=ExtResource("3_r86yo")]
 position = Vector2(1283, -98)
 
-[node name="Enemy" parent="." index="6" instance=ExtResource("4_u273t")]
+[node name="Enemy" parent="." index="6" node_paths=PackedStringArray("patrol_points") instance=ExtResource("4_u273t")]
 position = Vector2(841, -54)
+patrol_points = NodePath("PatrolPoints")
+
+[node name="PatrolPoints" type="Node" parent="Enemy" index="0"]
+
+[node name="Marker2D" type="Marker2D" parent="Enemy/PatrolPoints" index="0"]
+position = Vector2(776, -51)
+
+[node name="Marker2D2" type="Marker2D" parent="Enemy/PatrolPoints" index="1"]
+position = Vector2(936, -51)
 
 [node name="GameScreen" parent="." index="7" instance=ExtResource("5_yv6jh")]
 
 [node name="Emerald" parent="." index="9" instance=ExtResource("7_eo1pm")]
 position = Vector2(434, -62)
+
+[node name="Door" parent="." index="10" instance=ExtResource("8_v3j1p")]
+position = Vector2(382, -95)
+scale = Vector2(-1, -1)

@@ -10,6 +10,7 @@ public partial class C_Manager : Node
         //print hello world
         GD.Print("Hello, World!");
         GD.Print("Test 2!");
+        GD.Print("Test 3!");
     }
 
 }

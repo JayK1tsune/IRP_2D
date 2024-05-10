@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://bgbd2k250tyo3"]
+[gd_scene load_steps=26 format=3 uid="uid://bgbd2k250tyo3"]
 
+[ext_resource type="Script" path="res://Enemies/Rat_Prefab/Rat.gd" id="1_gqkka"]
 [ext_resource type="Texture2D" uid="uid://caph51gfnwcp0" path="res://Enemies/Rat/giantrat_spritesheet.png" id="1_j1pja"]
 [ext_resource type="Script" path="res://Enemies/Rat_Prefab/Gravity.gd" id="2_dh0hi"]
 [ext_resource type="Script" path="res://Enemies/Rat_Prefab/StateMachineController.gd" id="3_eqvsl"]
@@ -140,6 +141,7 @@ radius = 116.349
 [node name="EnemyRat" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 3
+script = ExtResource("1_gqkka")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4dcry")

@@ -6,15 +6,16 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_uwqax"]
 radius = 8.0
 
-[node name="C#Player" type="CharacterBody2D"]
+[node name="C#Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 2
 script = ExtResource("1_crf84")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -13)
 sprite_frames = ExtResource("2_og4rm")
-animation = &"Idle"
+animation = &"Falling"
 autoplay = "Idle"
-frame_progress = 0.461787
+frame_progress = 0.0584693
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -8)

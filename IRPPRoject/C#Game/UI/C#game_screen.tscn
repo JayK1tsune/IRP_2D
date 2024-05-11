@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqprtv7fbnx2q"]
+
+[ext_resource type="PackedScene" uid="uid://csb8437tk3qtg" path="res://C#Game/UI/C#health_bar.tscn" id="1_otxus"]
+[ext_resource type="Script" path="res://C#Game/UI/Cgame_screen.cs" id="1_xw48r"]
+[ext_resource type="Texture2D" uid="uid://b40kxjlnw3wsv" path="res://GodotGame/Collectibles/Blue Diamond/01.png" id="3_40ldu"]
+[ext_resource type="Texture2D" uid="uid://bfp2acbu8qvp1" path="res://GodotGame/UI/theme/pause-0001.png" id="4_dks0n"]
+[ext_resource type="Theme" uid="uid://chdkixty2eqcm" path="res://GodotGame/UI/theme/GameTheme.tres" id="5_u4dsw"]
+
+[node name="GameScreen" type="CanvasLayer" node_paths=PackedStringArray("checkButton")]
+script = ExtResource("1_xw48r")
+checkButton = NodePath("Control/CheckButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_direction = 2
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="HealthBar" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource("1_otxus")]
+position = Vector2(-4, -4)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(9, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/HBoxContainer/Control"]
+position = Vector2(-4.76837e-07, 0)
+texture = ExtResource("3_40ldu")
+centered = false
+offset = Vector2(-9, -3)
+
+[node name="CollectibleLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseTextureButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("4_dks0n")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CheckButton" type="CheckButton" parent="Control"]
+offset_left = -64.0
+offset_top = -254.0
+offset_right = 47.0
+offset_bottom = -221.0
+theme = ExtResource("5_u4dsw")
+theme_override_font_sizes/font_size = 23
+text = "C#"
+alignment = 1
+
+[connection signal="pressed" from="MarginContainer/PauseTextureButton" to="." method="_on_pause_texture_button_pressed"]
+[connection signal="pressed" from="Control/CheckButton" to="." method="_on_check_button_pressed"]
+[connection signal="toggled" from="Control/CheckButton" to="." method="_on_check_button_toggled"]

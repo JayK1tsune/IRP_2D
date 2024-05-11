@@ -6,7 +6,10 @@ var player_position_before_teleport : Vector2
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
-	linked_door_position = link_doors.global_position
+	if link_doors != null:
+		linked_door_position = link_doors.global_position
+
+	
 	
 func _process(delta):
 	pass

@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://6ru56wo06kla"]
+
+[ext_resource type="Script" path="res://C#Game/Collectibles/Cblue_Diamond.cs" id="1_j1ecc"]
+[ext_resource type="Texture2D" uid="uid://b40kxjlnw3wsv" path="res://GodotGame/Collectibles/Blue Diamond/01.png" id="2_hna3p"]
+[ext_resource type="Texture2D" uid="uid://1frkcwq5susp" path="res://GodotGame/Collectibles/Blue Diamond/02.png" id="3_ugk50"]
+[ext_resource type="Texture2D" uid="uid://nibvqado65j3" path="res://GodotGame/Collectibles/Blue Diamond/03.png" id="4_lpjpx"]
+[ext_resource type="Texture2D" uid="uid://ol6pq7hhqgpj" path="res://GodotGame/Collectibles/Blue Diamond/04.png" id="5_mh36n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_45dv4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hna3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ugk50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lpjpx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mh36n")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5h5sx"]
+radius = 11.0454
+
+[node name="BlueDiamond" type="Node2D"]
+script = ExtResource("1_j1ecc")
+
+[node name="Image" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_45dv4")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.573255
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5h5sx")
+debug_color = Color(0.486275, 0.580392, 0.196078, 0.419608)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

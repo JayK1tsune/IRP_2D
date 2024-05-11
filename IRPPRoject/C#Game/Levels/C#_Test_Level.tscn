@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmcouy448jgkk"]
+[gd_scene load_steps=4 format=3 uid="uid://dmcouy448jgkk"]
 
 [ext_resource type="TileSet" uid="uid://d1vww2nt2vojk" path="res://GodotGame/Levels/Tileset.tres" id="1_g4a3f"]
 [ext_resource type="PackedScene" uid="uid://bqb6odlu6rp6l" path="res://C#Game/Player/C#_Player.tscn" id="2_l8e8s"]
+[ext_resource type="PackedScene" uid="uid://bqprtv7fbnx2q" path="res://C#Game/UI/C#game_screen.tscn" id="3_mwhs0"]
 
 [node name="C#TestLevel" type="Node2D"]
 
@@ -12,6 +13,9 @@ layer_0/tile_data = PackedInt32Array(-65536, 983040, 8, -65535, 983040, 8, -6553
 
 [node name="C#Player" parent="." instance=ExtResource("2_l8e8s")]
 position = Vector2(51, -126)
+jump_vertical_speed = 300
 
 [node name="Camera2D" type="Camera2D" parent="C#Player"]
-position = Vector2(-47, 51)
+position = Vector2(-2, -7)
+
+[node name="GameScreen" parent="." instance=ExtResource("3_mwhs0")]

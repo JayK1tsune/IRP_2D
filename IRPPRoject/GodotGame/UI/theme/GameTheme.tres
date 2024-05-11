@@ -1,0 +1,81 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://chdkixty2eqcm"]
+
+[ext_resource type="FontFile" uid="uid://2vyrj56kb84c" path="res://GodotGame/UI/theme/GravityRegular5.ttf" id="1_rkpe4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kl1fa"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.4, 0.360784, 0.639216, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0470588, 0.0313726, 0.262745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uwdn"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.121569, 0.105882, 0.227451, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0470588, 0.0313726, 0.262745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_verhs"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.364706, 0.32549, 0.592157, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0470588, 0.0313726, 0.262745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rohn3"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.25098, 0.219608, 0.423529, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0470588, 0.0313726, 0.262745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2atq"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.121569, 0.105882, 0.227451, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0470588, 0.0313726, 0.262745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpqov"]
+bg_color = Color(0.0352941, 0.0313726, 0.254902, 0.568627)
+
+[resource]
+default_font = ExtResource("1_rkpe4")
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_rkpe4")
+Button/styles/disabled = SubResource("StyleBoxFlat_kl1fa")
+Button/styles/focus = SubResource("StyleBoxFlat_0uwdn")
+Button/styles/hover = SubResource("StyleBoxFlat_verhs")
+Button/styles/normal = SubResource("StyleBoxFlat_rohn3")
+Button/styles/pressed = SubResource("StyleBoxFlat_c2atq")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_tpqov")

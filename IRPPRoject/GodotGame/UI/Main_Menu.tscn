@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://57kuhmtq6vsk"]
+
+[ext_resource type="Script" path="res://GodotGame/UI/Main_Menu.gd" id="1_v6sa3"]
+[ext_resource type="Texture2D" uid="uid://o3vp7hp5v5qs" path="res://GodotGame/UI/theme/image-from-rawpixel-id-14236374-jpeg.jpg" id="2_7os6a"]
+[ext_resource type="Theme" uid="uid://chdkixty2eqcm" path="res://GodotGame/UI/theme/GameTheme.tres" id="3_mhq4f"]
+
+[node name="MainMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_v6sa3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -43.0
+offset_right = 183.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7os6a")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_mhq4f")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Exit" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

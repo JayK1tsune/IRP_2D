@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb8coldjorqvo"]
+
+[ext_resource type="TileSet" uid="uid://d1vww2nt2vojk" path="res://GodotGame/Levels/Tileset.tres" id="1_noxqr"]
+[ext_resource type="PackedScene" uid="uid://j2fk3n7jpaes" path="res://GodotGame/Player/player.tscn" id="5_0rypm"]
+[ext_resource type="Script" path="res://GodotGame/Player/PlayerCamera2D.gd" id="6_3mpp0"]
+
+[node name="BaseLevel" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_noxqr")
+format = 2
+layer_0/name = "Background"
+layer_0/z_index = -1
+layer_1/name = "Ground"
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Foreground"
+layer_2/z_index = 1
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "Water"
+layer_3/tile_data = PackedInt32Array()
+
+[node name="Player" parent="." instance=ExtResource("5_0rypm")]
+position = Vector2(31, -139)
+
+[node name="PlayerCamera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(31, -139)
+limit_left = 2
+limit_top = -532
+limit_right = 2000
+limit_bottom = 16
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+script = ExtResource("6_3mpp0")
+player = NodePath("../Player")

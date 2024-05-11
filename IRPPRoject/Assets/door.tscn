@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://calcg3544loxj"]
 
-[ext_resource type="Script" path="res://Door.gd" id="1_x0126"]
+[ext_resource type="Script" path="res://GodotGame/Door.gd" id="1_x0126"]
 [ext_resource type="Texture2D" uid="uid://cb2117pnk3ysa" path="res://Assets/warped-files/gate-03.png" id="2_upc13"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_faq7o"]

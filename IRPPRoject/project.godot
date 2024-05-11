@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="Simple2D_IRP"
-run/main_scene="res://UI/Main_Menu.tscn"
+run/main_scene="res://GodotGame/UI/Main_Menu.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Assets/icon.svg"
 
 [autoload]
 
-Manager="*res://Scripts/Manager.gd"
-HealthManager="*res://Scripts/health_manager.gd"
-CollectiableManager="*res://Scripts/collectiable_manager.gd"
-CManager="*res://C#Scripts/C_Manager.cs"
+Manager="*res://GodotGame/Scripts/Manager.gd"
+HealthManager="*res://GodotGame/Scripts/health_manager.gd"
+CollectiableManager="*res://GodotGame/Scripts/collectiable_manager.gd"
+CManager="*res://C#Game/C#Scripts/C_Manager.cs"
 
 [display]
 

@@ -20,6 +20,8 @@ var current_state : State
 
 func _ready():
 	current_state = State.Idle
+	var loading_player_pos = SaveAndLoad.load_game()
+	self.global_position = loading_player_pos
 	hitbox.disabled = true
 
 func _physics_process(delta : float):

@@ -2,9 +2,15 @@ extends Node
 const LEVEL_1 = preload("res://GodotGame/Levels/Level_1.tscn")
 const PAUSE_MENU = preload("res://GodotGame/UI/PauseMenu.tscn")
 const MAIN_MENU = preload("res://GodotGame/UI/Main_Menu.tscn")
+@onready var player = %Player
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	RenderingServer.set_default_clear_color(Color(0.44,0.22,0.53,1.00))
+	var file = FileAccess.open("res://savegame.data",FileAccess.READ)
+	if player != null:
+			player.global_position = file.get_var()
+			file.close()
+
 
 
 func start_game():

@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhy8fx5e0vdt7"]
+
+[ext_resource type="Script" path="res://C#Game/Collectibles/Cblue_Diamond.cs" id="1_xb656"]
+[ext_resource type="Texture2D" uid="uid://dud7gmuqtyoxd" path="res://GodotGame/Collectibles/Green Diamond/01.png" id="2_h3rtj"]
+[ext_resource type="Texture2D" uid="uid://camuh0fx648x0" path="res://GodotGame/Collectibles/Green Diamond/02.png" id="3_lbtit"]
+[ext_resource type="Texture2D" uid="uid://ba72xoved5o8o" path="res://GodotGame/Collectibles/Green Diamond/03.png" id="4_xj0qb"]
+[ext_resource type="Texture2D" uid="uid://bycmhvt0unn5s" path="res://GodotGame/Collectibles/Green Diamond/04.png" id="5_er3yp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_45dv4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h3rtj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lbtit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xj0qb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_er3yp")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5h5sx"]
+radius = 11.0454
+
+[node name="GreenDiamond" type="Node2D"]
+script = ExtResource("1_xb656")
+
+[node name="Image" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_45dv4")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.573255
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5h5sx")
+debug_color = Color(0.486275, 0.580392, 0.196078, 0.419608)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

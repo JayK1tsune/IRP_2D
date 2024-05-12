@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccadk28iwe8vl"]
+[gd_scene load_steps=6 format=3 uid="uid://ccadk28iwe8vl"]
 
 [ext_resource type="Script" path="res://GodotGame/UI/game_screen.gd" id="1_1bu4u"]
 [ext_resource type="PackedScene" uid="uid://bnkudn364c7jq" path="res://GodotGame/UI/health_bar.tscn" id="1_h14ng"]
 [ext_resource type="Texture2D" uid="uid://b40kxjlnw3wsv" path="res://GodotGame/Collectibles/Blue Diamond/01.png" id="3_nurl6"]
 [ext_resource type="Texture2D" uid="uid://bfp2acbu8qvp1" path="res://GodotGame/UI/theme/pause-0001.png" id="4_wr1q5"]
+[ext_resource type="Theme" uid="uid://chdkixty2eqcm" path="res://GodotGame/UI/theme/GameTheme.tres" id="5_vtwjy"]
 
 [node name="GameScreen" type="CanvasLayer"]
 script = ExtResource("1_1bu4u")
@@ -56,4 +57,40 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 texture_normal = ExtResource("4_wr1q5")
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CheckButton" type="CheckButton" parent="Control"]
+layout_mode = 0
+offset_left = -128.0
+offset_top = -254.0
+offset_right = 128.0
+offset_bottom = -221.0
+theme = ExtResource("5_vtwjy")
+theme_override_font_sizes/font_size = 23
+text = "C#"
+alignment = 1
+
+[node name="PauseTextureButton2" type="TextureButton" parent="."]
+offset_left = 378.0
+offset_top = 11.0
+offset_right = 390.0
+offset_bottom = 23.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("4_wr1q5")
+
 [connection signal="pressed" from="MarginContainer/PauseTextureButton" to="." method="_on_pause_texture_button_pressed"]
+[connection signal="pressed" from="Control/CheckButton" to="." method="_on_check_button_pressed"]
+[connection signal="toggled" from="Control/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="PauseTextureButton2" to="." method="_on_pause_texture_button_2_pressed"]

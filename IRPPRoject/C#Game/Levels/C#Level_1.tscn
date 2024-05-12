@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8v6oj2m2xpr5"]
+[gd_scene load_steps=11 format=3 uid="uid://b8v6oj2m2xpr5"]
 
 [ext_resource type="PackedScene" uid="uid://bqprtv7fbnx2q" path="res://C#Game/UI/C#game_screen.tscn" id="2_agjpt"]
 [ext_resource type="PackedScene" uid="uid://dgxn17bqjk8qi" path="res://GodotGame/Background/parallax_background.tscn" id="2_n11un"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bqb6odlu6rp6l" path="res://C#Game/Player/C#_Player.tscn" id="5_7p8w1"]
 [ext_resource type="Script" path="res://GodotGame/Player/PlayerCamera2D.gd" id="6_5jnsb"]
 [ext_resource type="PackedScene" uid="uid://6ru56wo06kla" path="res://C#Game/Collectibles/C#blue_Diamond.tscn" id="7_fo5co"]
+[ext_resource type="PackedScene" uid="uid://bhy8fx5e0vdt7" path="res://C#Game/Collectibles/C#Green_Diamond.tscn" id="8_4gxtm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjd2u"]
 size = Vector2(224, 17)
@@ -72,6 +73,26 @@ position = Vector2(281, -48)
 [node name="BlueDiamond2" parent="Collectibles" instance=ExtResource("7_fo5co")]
 position = Vector2(94, -193)
 awardAmount = 8
+
+[node name="Green1" parent="Collectibles" instance=ExtResource("8_4gxtm")]
+position = Vector2(342, -189)
+awardAmount = 5
+
+[node name="Green2" parent="Collectibles" instance=ExtResource("8_4gxtm")]
+position = Vector2(576, -80)
+awardAmount = 7
+
+[node name="green3" parent="Collectibles" instance=ExtResource("8_4gxtm")]
+position = Vector2(937, -160)
+awardAmount = 2
+
+[node name="green4" parent="Collectibles" instance=ExtResource("8_4gxtm")]
+position = Vector2(1204, -220)
+awardAmount = 3
+
+[node name="Green5" parent="Collectibles" instance=ExtResource("8_4gxtm")]
+position = Vector2(1098, -85)
+awardAmount = 4
 
 [node name="TileMap" type="TileMap" parent="."]
 rotation = -0.00018331

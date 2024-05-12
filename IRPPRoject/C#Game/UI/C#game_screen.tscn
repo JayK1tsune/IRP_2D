@@ -77,13 +77,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="CheckButton" type="CheckButton" parent="Control"]
-offset_left = -64.0
+layout_mode = 0
+offset_left = -128.0
 offset_top = -254.0
-offset_right = 47.0
+offset_right = 128.0
 offset_bottom = -221.0
 theme = ExtResource("5_u4dsw")
 theme_override_font_sizes/font_size = 23
-text = "C#"
+text = "Godot"
 alignment = 1
 
 [connection signal="pressed" from="MarginContainer/PauseTextureButton" to="." method="_on_pause_texture_button_pressed"]

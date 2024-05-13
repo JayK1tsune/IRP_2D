@@ -27,7 +27,7 @@ transform = Transform2D(1, 0, 0, 1, 0, -265)
 offset = Vector2(0, -529)
 transform = Transform2D(1, 0, 0, 1, 0, -529)
 
-[node name="GameScreen" parent="UI" instance=ExtResource("2_agjpt")]
+[node name="C#GameScreen" parent="UI" instance=ExtResource("2_agjpt")]
 
 [node name="Doors" type="Node" parent="."]
 
@@ -144,3 +144,5 @@ collision_mask = 2
 position = Vector2(672.5, 6)
 shape = SubResource("RectangleShape2D_ioj4o")
 debug_color = Color(0.380392, 0.470588, 1, 0.419608)
+
+[editable path="UI/C#GameScreen"]

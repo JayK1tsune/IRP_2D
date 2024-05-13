@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bfp2acbu8qvp1" path="res://GodotGame/UI/theme/pause-0001.png" id="4_dks0n"]
 [ext_resource type="Theme" uid="uid://chdkixty2eqcm" path="res://GodotGame/UI/theme/GameTheme.tres" id="5_u4dsw"]
 
-[node name="GameScreen" type="CanvasLayer" node_paths=PackedStringArray("checkButton")]
+[node name="GameScreen" type="CanvasLayer" node_paths=PackedStringArray("collectibleLabel", "checkButton")]
 script = ExtResource("1_xw48r")
+collectibleLabel = NodePath("MarginContainer/VBoxContainer/HBoxContainer/CollectibleLabel")
 checkButton = NodePath("Control/CheckButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

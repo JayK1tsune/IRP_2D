@@ -3,6 +3,7 @@ using System;
 
 public partial class Cgame_screen : CanvasLayer
 {
+	[Export]
 	private Label collectibleLabel;
 	[Export]
 	public CheckButton checkButton;
@@ -18,11 +19,18 @@ public partial class Cgame_screen : CanvasLayer
 		checkButton = GetNode<CheckButton>("Control/CheckButton");
 		collectibleLabel = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/CollectibleLabel");
 		C_CollectiblesManager.Instance.CollectibleAwardReceived += OnCollectibleAwardReceived;
+
 		
 	}
 
 	public void OnCollectibleAwardReceived(int totalAward)
 	{
+		if (collectibleLabel == null)
+		{
+			//find the collectible label 
+			collectibleLabel = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/CollectibleLabel");
+			collectibleLabel.Text = totalAward.ToString();
+		}
 		collectibleLabel.Text = totalAward.ToString();
 	}
 
@@ -42,9 +50,16 @@ public partial class Cgame_screen : CanvasLayer
 	{
 		if (buttonPressed)
 		{
+			//emit singal bedore changing the scene
+			EmitSignal("Level_Changed", collectibleLabel.Text);
             GetTree().ChangeSceneToPacked(GDgameScreen);
-
+            //save the current level usiong ResourceSaver class and save the current level
+			//remove singal from the collectible manager
+			C_CollectiblesManager.Instance.CollectibleAwardReceived -= OnCollectibleAwardReceived;
+			//reset the total award amount
+			C_CollectiblesManager.Instance.ResetTotalAwardAmount();
 		}
 
 	}
+
 }

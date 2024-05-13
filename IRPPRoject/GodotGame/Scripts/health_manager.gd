@@ -23,6 +23,6 @@ func increase_health(health_amount : int):
 	
 	if current_health > max_health:
 		current_health = max_health
-	
+		
 	print("Increase Health Entered")
 	on_health_changed.emit(current_health)

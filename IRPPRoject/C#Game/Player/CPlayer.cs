@@ -10,6 +10,7 @@ public partial class CPlayer : CharacterBody2D
 	public int max_horizontal_speed = 1000;
 	[Export] 
 	public int jump_vertical_speed = 1000;
+	GDScript SaveLoad = GD.Load<GDScript>("res://GodotGame/Scripts/SaveLoad.gd");
 	
 	public enum PlayerState
 	{
@@ -26,6 +27,11 @@ public partial class CPlayer : CharacterBody2D
 	public override void _Ready()
 	{
 		current_state = PlayerState.Idle;
+		var loadingposition = SaveLoad.Call("C_start_game");
+		//chnage the player's position to the loaded position
+		Position = (Vector2)loadingposition;
+
+		
 	}
 	public override void _PhysicsProcess(double delta)
 	{

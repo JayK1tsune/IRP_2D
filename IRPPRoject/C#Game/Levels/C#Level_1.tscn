@@ -17,18 +17,6 @@ size = Vector2(319, 17)
 
 [node name="BaseLevel" type="Node2D"]
 
-[node name="UI" type="Node" parent="."]
-
-[node name="ParallaxBackground" parent="UI" instance=ExtResource("2_n11un")]
-offset = Vector2(0, -265)
-transform = Transform2D(1, 0, 0, 1, 0, -265)
-
-[node name="ParallaxBackground2" parent="UI" instance=ExtResource("2_n11un")]
-offset = Vector2(0, -529)
-transform = Transform2D(1, 0, 0, 1, 0, -529)
-
-[node name="C#GameScreen" parent="UI" instance=ExtResource("2_agjpt")]
-
 [node name="Doors" type="Node" parent="."]
 
 [node name="Door" parent="Doors" node_paths=PackedStringArray("linkDoors") instance=ExtResource("3_qetj3")]
@@ -110,7 +98,7 @@ layer_3/name = "Water"
 layer_3/tile_data = PackedInt32Array()
 
 [node name="C#Player" parent="." instance=ExtResource("5_7p8w1")]
-position = Vector2(65, -42)
+position = Vector2(53, -39)
 jump_vertical_speed = 300
 
 [node name="PlayerCamera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
@@ -144,5 +132,18 @@ collision_mask = 2
 position = Vector2(672.5, 6)
 shape = SubResource("RectangleShape2D_ioj4o")
 debug_color = Color(0.380392, 0.470588, 1, 0.419608)
+
+[node name="UI" type="Node" parent="."]
+
+[node name="ParallaxBackground" parent="UI" instance=ExtResource("2_n11un")]
+offset = Vector2(0, -265)
+transform = Transform2D(1, 0, 0, 1, 0, -265)
+
+[node name="ParallaxBackground2" parent="UI" instance=ExtResource("2_n11un")]
+offset = Vector2(0, -529)
+transform = Transform2D(1, 0, 0, 1, 0, -529)
+
+[node name="C#GameScreen" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("2_agjpt")]
+player = NodePath("../../C#Player")
 
 [editable path="UI/C#GameScreen"]

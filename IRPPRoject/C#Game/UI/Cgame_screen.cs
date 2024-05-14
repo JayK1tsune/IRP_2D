@@ -12,7 +12,7 @@ public partial class Cgame_screen : CanvasLayer
 	//preload gdscript game screen
 	private PackedScene GDgameScreen = GD.Load<PackedScene>("res://GodotGame/Levels/Level_1.tscn");
 	private bool isCSharpLevelLoaded  = true;
-    private bool isGdScriptLevelLoaded = false;
+	private bool isGdScriptLevelLoaded = false;
 
 	public override void _Ready()
 	{
@@ -51,9 +51,9 @@ public partial class Cgame_screen : CanvasLayer
 		if (buttonPressed)
 		{
 			//emit singal bedore changing the scene
-			EmitSignal("Level_Changed", collectibleLabel.Text);
-            GetTree().ChangeSceneToPacked(GDgameScreen);
-            //save the current level usiong ResourceSaver class and save the current level
+			//EmitSignal("Level_Changed", collectibleLabel.Text);
+			GetTree().ChangeSceneToPacked(GDgameScreen);
+			//save the current level usiong ResourceSaver class and save the current level
 			//remove singal from the collectible manager
 			C_CollectiblesManager.Instance.CollectibleAwardReceived -= OnCollectibleAwardReceived;
 			//reset the total award amount

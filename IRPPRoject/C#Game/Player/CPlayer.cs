@@ -4,31 +4,31 @@ using System.Diagnostics;
 
 public partial class CPlayer : CharacterBody2D
 {
-    [Export] 
+	[Export] 
 	public float Speed = 300.0f;
-    [Export] 
+	[Export] 
 	public int max_horizontal_speed = 1000;
-    [Export] 
+	[Export] 
 	public int jump_vertical_speed = 1000;
 	
-    public enum PlayerState
-    {
-        Idle,
-        Walk,
-        Jump,
-        Fall,
-    }
-    public PlayerState current_state;
+	public enum PlayerState
+	{
+		Idle,
+		Walk,
+		Jump,
+		Fall,
+	}
+	public PlayerState current_state;
 
-    // Get the gravity from the project settings to be synced with RigidBody nodes.
-    public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+	// Get the gravity from the project settings to be synced with RigidBody nodes.
+	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
-    public override void _Ready()
-    {
-        current_state = PlayerState.Idle;
-    }
-    public override void _PhysicsProcess(double delta)
-    {
+	public override void _Ready()
+	{
+		current_state = PlayerState.Idle;
+	}
+	public override void _PhysicsProcess(double delta)
+	{
 		player_Gravity((float)delta);
 		player_run((float)delta);
 		player_fall();
@@ -38,16 +38,16 @@ public partial class CPlayer : CharacterBody2D
 			player_jump();
 		}
 		
-        MoveAndSlide();
+		MoveAndSlide();
 		
 		//print out the player's state
 		GD.Print(current_state);
-    }
+	}
 
 	public void player_Gravity(float delta)
 	{
 		Vector2 velocity = Velocity;
-        if (!IsOnFloor()) {
+		if (!IsOnFloor()) {
 			velocity.Y += gravity * (float)delta;
 		}
 		Velocity = velocity;

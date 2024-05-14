@@ -32,7 +32,7 @@ func _on_check_button_pressed():
 func _on_check_button_toggled(toggled_on):
 	if player != null:
 		var player_posistion = player.global_position
-		#SaveAndLoad.save_game(player_posistion)
+		SaveAndLoad.save_game(player_posistion)
 		#Manager.hasSaved + 1
 	get_tree().change_scene_to_packed(C_LEVEL_1)
 	

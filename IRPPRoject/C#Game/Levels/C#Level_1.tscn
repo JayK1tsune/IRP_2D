@@ -143,7 +143,6 @@ transform = Transform2D(1, 0, 0, 1, 0, -265)
 offset = Vector2(0, -529)
 transform = Transform2D(1, 0, 0, 1, 0, -529)
 
-[node name="C#GameScreen" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("2_agjpt")]
-player = NodePath("../../C#Player")
+[node name="C#GameScreen" parent="UI" instance=ExtResource("2_agjpt")]
 
 [editable path="UI/C#GameScreen"]

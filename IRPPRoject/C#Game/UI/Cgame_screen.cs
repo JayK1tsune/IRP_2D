@@ -26,9 +26,9 @@ public partial class Cgame_screen : CanvasLayer
 		C_CollectiblesManager.Instance.CollectibleAwardReceived += OnCollectibleAwardReceived;
 		//get the player from the scene player is called C#Player
 		//get the players position
-		Vector2 playerPosition = ((CharacterBody2D)player).Position;
+		//Vector2 playerPosition = ((CharacterBody2D)player).Position;
 		//print out the player's position
-		GD.Print(playerPosition);
+		//GD.Print(playerPosition);
 
 	
 

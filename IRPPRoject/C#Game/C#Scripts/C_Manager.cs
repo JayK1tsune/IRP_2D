@@ -4,7 +4,7 @@ using System;
 
 public partial class C_Manager : Node
 {
-    private PackedScene LEVEL_1 = GD.Load<PackedScene>("res://C#Game/Levels/C#_Test_level.tscn");
+    private PackedScene LEVEL_1 = GD.Load<PackedScene>("res://C#Game/Levels/C#Level_1.tscn");
     private PackedScene PAUSE_MENU = GD.Load<PackedScene>("res://C#Game/UI/C#PauseMenu.tscn");
     private PackedScene MAIN_MENU = GD.Load<PackedScene>("res://C#Game/UI/C#Main_Menu.tscn");
 

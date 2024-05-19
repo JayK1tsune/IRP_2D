@@ -81,16 +81,6 @@ theme_override_font_sizes/font_size = 23
 text = "C#"
 alignment = 1
 
-[node name="PauseTextureButton2" type="TextureButton" parent="."]
-offset_left = 378.0
-offset_top = 11.0
-offset_right = 390.0
-offset_bottom = 23.0
-size_flags_horizontal = 8
-size_flags_vertical = 0
-texture_normal = ExtResource("4_wr1q5")
-
 [connection signal="pressed" from="MarginContainer/PauseTextureButton" to="." method="_on_pause_texture_button_pressed"]
 [connection signal="pressed" from="Control/CheckButton" to="." method="_on_check_button_pressed"]
 [connection signal="toggled" from="Control/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="pressed" from="PauseTextureButton2" to="." method="_on_pause_texture_button_2_pressed"]
